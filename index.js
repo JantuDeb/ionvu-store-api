@@ -2,7 +2,7 @@ const app = require("./app");
 const cloudinary = require("cloudinary");
 require("dotenv").config();
 
-
+const port = process.env.PORT || 4000;
 //cloudinary config
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -10,7 +10,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-
-app.listen(process.env.PORT || port, () => {
+app.listen(port, () => {
   console.log(`API LISTENING ON PORT ${process.env.PORT}`);
 });
