@@ -1,6 +1,6 @@
 const User = require("../model/user");
 
-const isAuthenticated = (req, res, next) => {
+const isAdmin = (req, res, next) => {
   try {
     const user = User.findById(req.userId);
     if (!user)
