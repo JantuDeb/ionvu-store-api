@@ -9,11 +9,10 @@ exports.signup = async (req, res) => {
   let user;
   let result;
   const { name, email, password } = req.body;
-  if (!email || !name || !password) {
+  if (!email || !name || !password)
     return res
       .status(400)
       .json({ success: false, errror: "Name, email and password are requied" });
-  }
 
   if (req.files) {
     let file = req.files.photo;
@@ -81,7 +80,7 @@ exports.login = async (req, res) => {
 
     //generate token
     const { token, options } = cookieToken(user);
-
+    user.password = undefined;
     //send response
     res
       .status(200)
@@ -196,7 +195,7 @@ exports.getUserDetails = async (req, res) => {
       return res
         .status(404)
         .send({ success: false, message: "User not found" });
-        
+
     res.status(200).send({ success: true, user });
   } catch (error) {
     res.status(500).send({ success: false, error: error.message });
@@ -259,14 +258,17 @@ exports.updateUserDetails = async (req, res) => {
     let result;
     if (req.files?.photo) {
       // delete photo if user send a new photo
-      if(user.photo.id) await cloudinary.v2.uploader.destroy(user.photo.id);
+      if (user.photo.id) await cloudinary.v2.uploader.destroy(user.photo.id);
 
       // upload the new photo
-      result = await cloudinary.v2.uploader.upload(req.files.photo.tempFilePath, {
-        folder: "user-photos",
-        width: 150,
-        crop: "scale",
-      });
+      result = await cloudinary.v2.uploader.upload(
+        req.files.photo.tempFilePath,
+        {
+          folder: "user-photos",
+          width: 150,
+          crop: "scale",
+        }
+      );
     }
 
     // create photo object

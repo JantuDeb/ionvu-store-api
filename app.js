@@ -18,8 +18,12 @@ app.use(
   })
 );
 
+const corsConFig = {
+  origin: "http://localhost:3000",
+  credentials: true,
+};
 //cors middleware
-app.use(cors());
+app.use(cors(corsConFig));
 
 // import all routes
 const user = require("./routes/user");
