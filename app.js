@@ -19,7 +19,7 @@ app.use(
 );
 
 const corsConFig = {
-  origin: ["http://localhost:3000","https://ionvu-store.netlify.app/" ],
+  origin: ["http://localhost:3000","https://ionvu-store.netlify.app/", "https://react-b2d53.web.app/" ],
   credentials: true,
 };
 //cors middleware
