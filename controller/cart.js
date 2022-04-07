@@ -64,7 +64,6 @@ exports.decCartItemQuantity = async (req, res) => {
 
   try {
     const cart = await Cart.findOne({ product: productId, user: req.userId });
-    console.log(cart);
     if (!cart)
       return res
         .status(404)

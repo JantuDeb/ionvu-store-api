@@ -11,7 +11,6 @@ exports.addToWishlist = async (req, res) => {
       product: productId,
       user: req.userId,
     });
-    console.log(wishlist);
     if (wishlist)
       return res
         .status(400)

@@ -232,7 +232,6 @@ exports.updateUserPassword = async (req, res) => {
     await user.save();
     //generate token
     const { token, options } = cookieToken(user);
-    console.log(token, options);
     //send response
     res
       .status(200)
