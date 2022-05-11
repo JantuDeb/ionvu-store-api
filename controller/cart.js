@@ -1,5 +1,4 @@
 const Cart = require("../model/cart");
-const user = require("../model/user");
 
 exports.addToCart = async (req, res) => {
   const { productId } = req.body;
@@ -20,7 +19,6 @@ exports.addToCart = async (req, res) => {
       user: req.userId,
       product: productId,
     });
-
     res.status(201).send({ success: true, cart: newCart });
   } catch (error) {
     res.status(500).send({ success: false, message: error.message });

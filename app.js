@@ -31,6 +31,9 @@ const category = require("./routes/category");
 const product = require("./routes/product");
 const cart = require("./routes/cart");
 const wishlist = require("./routes/wishlist");
+const address = require("./routes/address");
+const order = require("./routes/order");
+const payment = require("./routes/payment");
 
 //routes middlewares
 app.use("/api/v1", user); // user routes
@@ -38,5 +41,8 @@ app.use("/api/v1", category); // category routes
 app.use("/api/v1", product); // product routes
 app.use("/api/v1", cart); // cart routes
 app.use("/api/v1", wishlist); // wishlist routes
+app.use("/api/v1", address); // address routes
+app.use("/api/v1", order); // order routes
+app.use("/api/v1", payment); //payment
 
 module.exports = app;

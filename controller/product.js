@@ -81,3 +81,18 @@ exports.getProducts = async (req, res) => {
     res.status(500).send({ success: false, message: error.message });
   }
 };
+
+
+exports.getProduct = async (req,res)=>{
+  const {productId}  = req.params
+  try {
+    const product = await Product.findById(productId);
+    if(!product) return res
+    .status(404)
+    .send({ success: false, message: "No product found" });
+
+    res.status(200).send({ success: true, product });
+  } catch (error) {
+    res.status(500).send({ success: false, message: error.message });
+  }
+}
